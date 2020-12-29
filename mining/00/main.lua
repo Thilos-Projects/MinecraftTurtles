@@ -17,5 +17,5 @@ while i > -1 do
     end
     turtle.placeDown(1)
     turtle.forward()
-    i=-1
+    i=i-1
 end
