@@ -5,6 +5,7 @@ function checkFuel()
         if turtle.getItemCount(15) < 1 then
             term.write("bitte in Slot 15 brennstoff nachlegen\n")
             while turtle.getItemCount(15) < 1 do
+                os.sleep(10);
             end
         end
         turtle.refuel(1)
