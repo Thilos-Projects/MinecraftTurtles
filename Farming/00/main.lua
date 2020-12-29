@@ -4,8 +4,9 @@ function checkFuel()
         turtle.select(15)
         if turtle.getItemCount(15) < 1 then
             term.write("bitte in Slot 15 brennstoff nachlegen\n")
-            while turtle.getItemCount(15) < 1 do
-                os.sleep(10);
+            while turtle.getFuelLevel() < 1 do
+                turtle.refuel(1)
+                os.sleep(1);
             end
         end
         turtle.refuel(1)
@@ -22,8 +23,8 @@ function moveForward()
 end
 
 function buildGround(xMax,yMax)
-    x = 0
-    y = 0
+    local x = 0
+    local y = 0
     while y < yMax do
         while x < xMax do
             x=x+1
@@ -40,7 +41,7 @@ function buildGround(xMax,yMax)
             turtle.turnLeft()
         end
 
-        x=xMax
+        x=0
     end
 end
 
