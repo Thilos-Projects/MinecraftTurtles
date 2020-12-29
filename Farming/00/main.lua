@@ -24,7 +24,12 @@ end
 
 function plantForward()
     moveForward()
-    io.write(turtle.inspectDown()[1].."\n");
+    local i,j = turtle.inspectDown();
+    if type(j) == "string" then
+        io.write(j.."\n");
+    else
+        io.write(j[0].."\n");
+    end
 end
 
 function driveOverGround(xMax,yMax)
