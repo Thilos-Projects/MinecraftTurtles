@@ -1,8 +1,8 @@
 function checkFuel()
-    if turtle.getFuelLevel() < 1 do
+    if turtle.getFuelLevel() < 1 then
         local currentSlot = turtle.getSelectedSlot();
         turtle.select(15)
-        if turtle.getItemCount(15) < 1 do
+        if turtle.getItemCount(15) < 1 then
             term.write("bitte in Slot 15 brennstoff nachlegen\n")
             while turtle.getItemCount(15) < 1 do
             end
@@ -14,7 +14,7 @@ end
 
 function moveForward()
     checkFuel()
-    if turtle.detect() do
+    if turtle.detect() then
         turtle.dig()
     end
     turtle.forward()
