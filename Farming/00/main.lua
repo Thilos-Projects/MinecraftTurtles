@@ -22,34 +22,53 @@ function moveForward()
     turtle.forward()
 end
 
+function replant()
+    turtle.digDown();
+    turtle.select(1);
+    turtle.placeDown();
+end
+
 function plantForward()
     moveForward()
     local i,j = turtle.inspectDown();
     if i then
-        if type(j) == "string" then
-            io.write(j.."\n");
-        else
-            io.write(j[0]);
+        local k = j.name;
+        if k == "seed" then
+            if j.state.age == 7 then
+                replant()
+            end
         end
     end
 end
 
-function driveOverGround(xMax,yMax)
+function driveOverGround(xMax,yMax,plant)
     local x = 0
     local y = 0
     while y < yMax do
         while x < xMax do
             x=x+1
-            plantForward()
+            if plant then
+                plantForward()
+            else
+                moveForward()
+            end
         end
         y=y+1
         if y % 2 == 0 then
             turtle.turnRight()
-            plantForward()
+            if plant then
+                plantForward()
+            else
+                moveForward()
+            end
             turtle.turnRight()
         else
             turtle.turnLeft()
-            plantForward()
+            if plant then
+                plantForward()
+            else
+                moveForward()
+            end
             turtle.turnLeft()
         end
 
@@ -57,12 +76,15 @@ function driveOverGround(xMax,yMax)
     end
 end
 
+
+
 term.write("bitteLängeEingeben\n");
 local xMax = tonumber(io.read());
 term.write("bitteBreiteEingeben\n");
 local yMax = tonumber(io.read());
 while true do
-    driveOverGround(xMax,yMax)
+    driveOverGround(xMax,yMax,true)
+    driveOverGround(xMax,yMax,false)
     os.sleep(60);
 end
 
