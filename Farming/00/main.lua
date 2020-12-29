@@ -25,10 +25,10 @@ function buildGround(xMax,yMax)
     y = 0
     while y < yMax do
         while x < xMax do
-            x=x-1
+            x=x+1
             moveForward()
         end
-        y=y-1
+        y=y+1
         turtle.turnRight()
         moveForward()
         turtle.turnRight()
