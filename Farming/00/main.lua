@@ -25,10 +25,12 @@ end
 function plantForward()
     moveForward()
     local i,j = turtle.inspectDown();
-    if type(j) == "string" then
-        io.write(j.."\n");
-    else
-        io.write(j[0].."\n");
+    if i then
+        if type(j) == "string" then
+            io.write(j.."\n");
+        else
+            io.write(j[0]);
+        end
     end
 end
 
