@@ -12,9 +12,10 @@ while i > -1 do
     end
     turtle.placeUp(1)
     turtle.down()
-    while turtle.detectUp() do
+    while turtle.detectDown() do
         turtle.digDown()
     end
     turtle.placeDown(1)
+    turtle.forward()
     i=-1
 end
