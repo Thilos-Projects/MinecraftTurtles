@@ -30,9 +30,16 @@ function buildGround(xMax,yMax)
             moveForward()
         end
         y=y+1
-        turtle.turnRight()
-        moveForward()
-        turtle.turnRight()
+        if y % 2 == 0 then
+            turtle.turnRight()
+            moveForward()
+            turtle.turnRight()
+        else
+            turtle.turnLeft()
+            moveForward()
+            turtle.turnLeft()
+        end
+
         x=xMax
     end
 end
