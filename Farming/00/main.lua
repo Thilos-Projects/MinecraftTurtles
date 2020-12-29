@@ -22,22 +22,27 @@ function moveForward()
     turtle.forward()
 end
 
-function buildGround(xMax,yMax)
+function plantForward()
+    moveForward()
+    io.write(turtle.inspectDown()[1].."\n");
+end
+
+function driveOverGround(xMax,yMax)
     local x = 0
     local y = 0
     while y < yMax do
         while x < xMax do
             x=x+1
-            moveForward()
+            plantForward()
         end
         y=y+1
         if y % 2 == 0 then
             turtle.turnRight()
-            moveForward()
+            plantForward()
             turtle.turnRight()
         else
             turtle.turnLeft()
-            moveForward()
+            plantForward()
             turtle.turnLeft()
         end
 
@@ -49,7 +54,9 @@ term.write("bitteLängeEingeben\n");
 local xMax = tonumber(io.read());
 term.write("bitteBreiteEingeben\n");
 local yMax = tonumber(io.read());
-buildGround(xMax,yMax)
-
+while true do
+    driveOverGround(xMax,yMax)
+    os.sleep(60);
+end
 
 
