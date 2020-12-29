@@ -33,11 +33,15 @@ function plantForward()
     local i,j = turtle.inspectDown();
     if i then
         local k = j.name;
-        if k == "seed" then
+        if k == "wheat" then
             if j.state.age == 7 then
                 replant()
             end
         end
+    else
+        turtle.digDown();
+        turtle.select(1)
+        turtle.placeDown();
     end
 end
 
@@ -76,15 +80,13 @@ function driveOverGround(xMax,yMax,plant)
     end
 end
 
-
-
 term.write("bitteLängeEingeben\n");
 local xMax = tonumber(io.read());
 term.write("bitteBreiteEingeben\n");
 local yMax = tonumber(io.read());
 while true do
     driveOverGround(xMax,yMax,true)
-    driveOverGround(xMax,yMax,false)
+    driveOverGround(xMax,yMax,true)
     os.sleep(60);
 end
 
