@@ -1,7 +1,9 @@
 term.write("length: ")
 length = tonumber(io.read())
-term.write("\ndoWalls: ")
-doWalls = tonumber(io.read())
+term.write("\ndoWallsLeft: ")
+doWallsLeft = tonumber(io.read())
+term.write("\ndoWallsRight: ")
+doWallsRight = tonumber(io.read())
 
 startLength = length
 
@@ -45,12 +47,15 @@ function doStep()
     end
     turtle.placeUp()
 
-    if doWalls == 1 then
+    if doWallsRight == 1 then
         turtle.turnRight()
         if not turtle.detect() then
             turtle.place()
         end
         turtle.turnLeft()
+    end
+    
+    if doWallsLeft == 1 then
         turtle.turnLeft()
         if not turtle.detect() then
             turtle.place()
@@ -63,12 +68,15 @@ function doStep()
         turtle.placeDown()
     end
 
-    if doWalls == 1 then
+    if doWallsRight == 1 then
         turtle.turnRight()
         if not turtle.detect() then
             turtle.place()
         end
         turtle.turnLeft()
+    end
+    
+    if doWallsLeft == 1 then
         turtle.turnLeft()
         if not turtle.detect() then
             turtle.place()
