@@ -18,6 +18,42 @@ function testFuel()
     end
 end
 
+function savePlace()
+    turtle.select(1)
+    if turtle.getItemCount(1) > 0 then
+        turtle.place()
+    else
+        term.write("\nreplaceBuildingMaterial")
+        while turtle.getItemCount(1) > 1 do
+            sleep(1)
+        end
+    end
+end
+
+function savePlaceUp()
+    turtle.select(1)
+    if turtle.getItemCount(1) > 0 then
+        turtle.placeUp()
+    else
+        term.write("\nreplaceBuildingMaterial")
+        while turtle.getItemCount(1) > 1 do
+            sleep(1)
+        end
+    end
+end
+
+function savePlaceDown()
+    turtle.select(1)
+    if turtle.getItemCount(1) > 0 then
+        turtle.placeUp()
+    else
+        term.write("\nreplaceBuildingMaterial")
+        while turtle.getItemCount(1) > 1 do
+            sleep(1)
+        end
+    end
+end
+
 function saveForward()
     while turtle.detect() do
         turtle.dig()
@@ -58,12 +94,12 @@ function doStep()
     while turtle.detectUp() do
         turtle.digUp()
     end
-    turtle.placeUp()
+    savePlaceUp()
 
     if doWallsRight == 1 then
         turtle.turnRight()
         if not turtle.detect() then
-            turtle.place()
+            savePlace()
         end
         turtle.turnLeft()
     end
@@ -71,7 +107,7 @@ function doStep()
     if doWallsLeft == 1 then
         turtle.turnLeft()
         if not turtle.detect() then
-            turtle.place()
+            savePlace()
         end
         turtle.turnRight()
     end
@@ -79,13 +115,13 @@ function doStep()
     testFuel()
     turtle.down()
     if not turtle.detectDown() then
-        turtle.placeDown()
+        savePlaceDown()
     end
 
     if doWallsRight == 1 then
         turtle.turnRight()
         if not turtle.detect() then
-            turtle.place()
+            savePlace()
         end
         turtle.turnLeft()
     end
@@ -93,7 +129,7 @@ function doStep()
     if doWallsLeft == 1 then
         turtle.turnLeft()
         if not turtle.detect() then
-            turtle.place()
+            savePlace()
         end
         turtle.turnRight()
     end
