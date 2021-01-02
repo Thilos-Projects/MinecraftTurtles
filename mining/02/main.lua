@@ -7,10 +7,22 @@ doWallsRight = tonumber(io.read())
 
 startLength = length
 
+function testFuel()
+    while turtle.getFuelLevel() < 1 do
+        local i = 16
+        while i > 0 do
+            turtle.select(i)
+            turtle.refuel();
+            i=i-1
+        end
+    end
+end
+
 function saveForward()
     while turtle.detect() do
         turtle.dig()
     end
+    testFuel()
     turtle.forward()
 end
 
@@ -41,6 +53,7 @@ function doStep()
     while turtle.detectUp() do
         turtle.digUp()
     end
+    testFuel()
     turtle.up()
     while turtle.detectUp() do
         turtle.digUp()
@@ -63,6 +76,7 @@ function doStep()
         turtle.turnRight()
     end
 
+    testFuel()
     turtle.down()
     if not turtle.detectDown() then
         turtle.placeDown()
@@ -88,11 +102,7 @@ end
 while length > -1 do
 
     doStep()
-    
-    while turtle.detect() do
-        turtle.dig()
-    end
-    turtle.forward()
+    saveForward()
 
     length = length - 1;
 end
